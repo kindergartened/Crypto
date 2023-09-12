@@ -25,17 +25,36 @@ namespace CryptoForm
             if (originalText.Text == "")
             {
                 MessageBox.Show("Пустое поле");
+                return;
+            }
+            if (originalText.Text.Length > keySizeInBitsForPrivate / 4)
+            {
+                MessageBox.Show($"Превышена максимальная длина текста. ({keySizeInBitsForPrivate / 4})");
+                return;
             }
             afterEncryption.Text = Encrypt(originalText.Text).ToString();
         }
 
         private void Decrypt_Click(object sender, EventArgs e)
         {
-            if (afterEncryption.Text == "")
+            try
             {
-                MessageBox.Show("Пустое поле");
+                if (afterEncryption.Text == "")
+                {
+                    MessageBox.Show("Пустое поле");
+                }
+                BigInteger bigInteger;
+                bool maybeBigInteger = BigInteger.TryParse(afterEncryption.Text, out bigInteger);
+                if (!maybeBigInteger)
+                {
+                    MessageBox.Show("Ошибка расшифровки: Неверно задана строка для расшифровки.");
+                }
+                afterDecryption.Text = Decrypt(bigInteger);
+            } catch
+            {
+                MessageBox.Show("Непредвиденная ошибка");
             }
-            afterDecryption.Text = Decrypt(BigInteger.Parse(afterEncryption.Text));
+            
         }
     }
 }
