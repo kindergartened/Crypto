@@ -57,6 +57,7 @@
             this.Encrypt.TabIndex = 0;
             this.Encrypt.Text = "Зашифровать";
             this.Encrypt.UseVisualStyleBackColor = false;
+            this.Encrypt.Click += new System.EventHandler(this.Encrypt_Click_1);
             // 
             // Decrypt
             // 
@@ -71,6 +72,7 @@
             this.Decrypt.TabIndex = 1;
             this.Decrypt.Text = "Расшифровать";
             this.Decrypt.UseVisualStyleBackColor = false;
+            this.Decrypt.Click += new System.EventHandler(this.Decrypt_Click_1);
             // 
             // originalText
             // 
@@ -151,6 +153,7 @@
             this.button1.TabIndex = 8;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 

@@ -219,7 +219,7 @@ namespace Crypto
         {
             int alflen=alf.Length;
             string res = "";
-            for (int i=0; i < alflen; i++)
+            for (int i=0; i < data.Length; i++)
             {
                 var c = data[i];
                 var index = alf.IndexOf(c);
@@ -229,7 +229,7 @@ namespace Crypto
                 }
                 else
                 {
-                    var codeIndex = (alflen + index + key) % alflen;
+                    int codeIndex = (alflen+ index + key) % alflen;
                     res += alf[codeIndex];
                 }
             }
