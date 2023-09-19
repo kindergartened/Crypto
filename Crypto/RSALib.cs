@@ -194,6 +194,9 @@ namespace Crypto
         public static BigInteger publicKey;
         public static int keySizeInBitsForPrivate = 512;
         public static int keySizeInBitsForPublic = 16;
+
+        private static string alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"+
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public static void StartSession()
         {
             p = RSA.GeneratePrime(keySizeInBitsForPrivate);
@@ -210,6 +213,27 @@ namespace Crypto
         public static string Decrypt(BigInteger ciphertext)
         {
             return RSA.Decrypt(ciphertext, privateKey, n);
+        }
+        
+        public static string Caesar(string data,int key)
+        {
+            int alflen=alf.Length;
+            string res = "";
+            for (int i=0; i < alflen; i++)
+            {
+                var c = data[i];
+                var index = alf.IndexOf(c);
+                if (index < 0)
+                {
+                    res += c.ToString(); //символ,которого нет в алфавите,оставляем без изменений
+                }
+                else
+                {
+                    var codeIndex = (alflen + index + key) % alflen;
+                    res += alf[codeIndex];
+                }
+            }
+            return res;
         }
     }
 }

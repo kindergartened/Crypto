@@ -56,5 +56,27 @@ namespace CryptoForm
             }
             
         }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int key = Convert.ToInt32(Key.Text);
+            if (originalText.Text == "")
+            {
+                MessageBox.Show("Пустое поле");
+                return;
+            }
+            afterEncryption.Text = Caesar(originalText.Text,key).ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int key = Convert.ToInt32(Key.Text);
+            if (afterEncryption.Text == "")
+            {
+                MessageBox.Show("Пустое поле");
+                return;
+            }
+            afterDecryption.Text = Caesar(originalText.Text, -key).ToString(); 
+        }
     }
 }
