@@ -1,6 +1,6 @@
-﻿using System.Numerics;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
+using Lib;
 
 namespace Crypto
 {
@@ -10,30 +10,30 @@ namespace Crypto
         private static RandomNumberGenerator rng = RandomNumberGenerator.Create();
 
         /// <summary>
-        /// Генерирует случайное простое число BigInteger заданной длины.
+        /// Генерирует случайное простое число BigInt заданной длины.
         /// </summary>
-        /// <returns>Случайное простое число BigInteger.</returns>
-        public static BigInteger GeneratePrime(int keySizeInBits)
+        /// <returns>Случайное простое число BigInt.</returns>
+        public static BigInt GeneratePrime(int keySizeInBits)
         {
             while (true)
             {
-                BigInteger candidate = GenerateRandomPositiveBigInteger(keySizeInBits);
+                BigInt candidate = GenerateRandomPositiveBigInteger(keySizeInBits);
                 if (IsProbablyPrime(candidate))
                     return candidate;
             }
         }
 
         /// <summary>
-        /// Генерирует случайное положительное BigInteger заданной длины.
+        /// Генерирует случайное положительное BigInt заданной длины.
         /// </summary>
         /// <param name="bitLength">Длина числа в битах.</param>
-        /// <returns>Случайное положительное BigInteger.</returns>
-        private static BigInteger GenerateRandomPositiveBigInteger(int bitLength)
+        /// <returns>Случайное положительное BigInt.</returns>
+        private static BigInt GenerateRandomPositiveBigInteger(int bitLength)
         {
             byte[] bytes = new byte[bitLength / 8];
             rng.GetBytes(bytes);
             bytes[bytes.Length - 1] &= 0x7F; // Установим младший бит в 0, чтобы гарантировать положительное число
-            return new BigInteger(bytes);
+            return new BigInt(bytes);
         }
 
         /// <summary>
@@ -42,18 +42,18 @@ namespace Crypto
         /// <param name="n">Проверяемое число.</param>
         /// <param name="iterations">Количество итераций для теста Миллера-Рабина (по умолчанию 10).</param>
         /// <returns>True, если число вероятно простое, иначе False.</returns>
-        private static bool IsProbablyPrime(BigInteger n, int iterations = 10)
+        private static bool IsProbablyPrime(BigInt n, int iterations = 10)
         {
             if (n <= 1 || n % 2 == 0)
                 return false;
             if (n <= 3)
                 return true;
 
-            BigInteger d = n - 1;
+            BigInt d = n - 1;
             int s = 0;
             while (d % 2 == 0)
             {
-                d >>= 1; // Правый сдвиг на 1 эквивалентен делению на 2
+                d /= 2;
                 s++;
             }
 
@@ -73,17 +73,17 @@ namespace Crypto
         /// <param name="d">Число d из разложения n - 1 = 2^s * d.</param>
         /// <param name="s">Число s из разложения n - 1 = 2^s * d.</param>
         /// <returns>True, если число вероятно простое, иначе False.</returns>
-        private static bool MillerRabinTest(BigInteger n, BigInteger d, int s)
+        private static bool MillerRabinTest(BigInt n, BigInt d, int s)
         {
-            BigInteger a = GenerateRandomPositiveBigInteger(n.ToByteArray().Length * 8 - 1) % (n - 2) + 2;
-            BigInteger x = BigInteger.ModPow(a, d, n);
+            BigInt a = GenerateRandomPositiveBigInteger(n.ToByteArray().Length * 8 - 1) % (n - 2) + 2;
+            BigInt x = BigInt.ModPow(a, d, n);
 
             if (x == 1 || x == n - 1)
                 return true;
 
             for (int r = 1; r < s; r++)
             {
-                x = BigInteger.ModPow(x, 2, n);
+                x = BigInt.ModPow(x, 2, n);
                 if (x == n - 1)
                     return true;
             }
@@ -96,16 +96,16 @@ namespace Crypto
         /// </summary>
         /// <param name="phi">Значение функции Эйлера (phi).</param>
         /// <returns>Открытая экспонента (e).</returns>
-        public static BigInteger GeneratePublicKey(BigInteger phi, int keySizeInBits)
+        public static BigInt GeneratePublicKey(BigInt phi, int keySizeInBits)
         {
             // Генерация открытой экспоненты (для упрощения можно использовать стандартное значение)
-            BigInteger publicKey;
+            BigInt publicKey;
 
             do
             {
                 publicKey = GenerateRandomPositiveBigInteger(keySizeInBits);
             }
-            while (BigInteger.GreatestCommonDivisor(publicKey, phi) != 1);
+            while (BigInt.GreatestCommonDivisor(publicKey, phi) != 1);
 
             return publicKey;
         }
@@ -115,9 +115,9 @@ namespace Crypto
         /// <param name="e">Открытая экспонента (e).</param>
         /// <param name="phi">Значение функции Эйлера (phi).</param>
         /// <returns>Закрытый ключ (d).</returns>
-        public static BigInteger CalculatePrivateKey(BigInteger e, BigInteger phi)
+        public static BigInt CalculatePrivateKey(BigInt e, BigInt phi)
         {
-            BigInteger d = ModInverse(e, phi);
+            BigInt d = ModInverse(e, phi);
             return d;
         }
 
@@ -127,16 +127,16 @@ namespace Crypto
         /// <param name="a">Число, для которого вычисляется обратное значение.</param>
         /// <param name="m">Модуль, по которому производится вычисление.</param>
         /// <returns>Модульное обратное значение (a^(-1) mod m).</returns>
-        static BigInteger ModInverse(BigInteger a, BigInteger m)
+        static BigInt ModInverse(BigInt a, BigInt m)
         {
-            BigInteger m0 = m;
-            BigInteger x0 = 0;
-            BigInteger x1 = 1;
+            BigInt m0 = m;
+            BigInt x0 = new("0");
+            BigInt x1 = new("1");
 
             while (a > 1)
             {
-                BigInteger q = a / m;
-                BigInteger t = m;
+                BigInt q = a / m;
+                BigInt t = m;
 
                 m = a % m;
                 a = t;
@@ -160,39 +160,38 @@ namespace Crypto
         /// <param name="data">Исходная строка данных для шифрования.</param>
         /// <param name="e">Открытая экспонента (e).</param>
         /// <param name="n">Модуль (n).</param>
-        /// <returns>Шифртекст в виде BigInteger.</returns>
-        public static BigInteger Encrypt(string data, BigInteger e, BigInteger n)
+        /// <returns>Шифртекст в виде BigInt.</returns>
+        public static BigInt Encrypt(string data, BigInt e, BigInt n)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(data);
-            BigInteger plaintext = new BigInteger(bytes);
-            BigInteger ciphertext = BigInteger.ModPow(plaintext, e, n);
+            BigInt plaintext = new BigInt(data);
+            BigInt ciphertext = BigInt.ModPow(plaintext, e, n);
             return ciphertext;
         }
 
         /// <summary>
         /// Расшифровывает шифртекст, используя закрытый ключ RSA.
         /// </summary>
-        /// <param name="ciphertext">Шифртекст в виде BigInteger.</param>
+        /// <param name="ciphertext">Шифртекст в виде BigInt.</param>
         /// <param name="d">Закрытый ключ (d).</param>
         /// <param name="n">Модуль (n).</param>
         /// <returns>Исходная строка данных после расшифровки.</returns>
-        public static string Decrypt(BigInteger ciphertext, BigInteger d, BigInteger n)
+        public static string Decrypt(BigInt ciphertext, BigInt d, BigInt n)
         {
-            BigInteger plaintext = BigInteger.ModPow(ciphertext, d, n);
+            BigInt plaintext = BigInt.ModPow(ciphertext, d, n);
             byte[] bytes = plaintext.ToByteArray();
             return Encoding.UTF8.GetString(bytes);
         }
     }
     public class Client
     {
-        private static BigInteger privateKey;
-        private static BigInteger p;
-        private static BigInteger q;
-        private static BigInteger phi;
+        private static BigInt privateKey;
+        private static BigInt p;
+        private static BigInt q;
+        private static BigInt phi;
 
-        public static BigInteger n;
-        public static BigInteger publicKey;
-        public static int keySizeInBitsForPrivate = 512;
+        public static BigInt n;
+        public static BigInt publicKey;
+        public static int keySizeInBitsForPrivate = 256;
         public static int keySizeInBitsForPublic = 16;
 
         private static string alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"+
@@ -206,11 +205,11 @@ namespace Crypto
             publicKey = RSA.GeneratePublicKey(phi, keySizeInBitsForPublic);
             privateKey = RSA.CalculatePrivateKey(publicKey, phi);
         }
-        public static BigInteger Encrypt(string data)
+        public static BigInt Encrypt(string data)
         {
             return RSA.Encrypt(data, publicKey, n);
         }
-        public static string Decrypt(BigInteger ciphertext)
+        public static string Decrypt(BigInt ciphertext)
         {
             return RSA.Decrypt(ciphertext, privateKey, n);
         }

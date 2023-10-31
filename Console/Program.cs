@@ -9,8 +9,7 @@ namespace ConsoleApp
         static void Main()
         {
             StartSession();
-            BigInteger b = Encrypt("123");
-            string s = Decrypt(b);
+            Console.WriteLine(publicKey);
         }
     }
 }

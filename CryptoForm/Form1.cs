@@ -1,7 +1,5 @@
 using static Crypto.Client;
-using System;
-using System.Numerics;
-using System.Security.Cryptography;
+using Lib;
 
 namespace CryptoForm
 {
@@ -43,8 +41,8 @@ namespace CryptoForm
                 {
                     MessageBox.Show("Пустое поле");
                 }
-                BigInteger bigInteger;
-                bool maybeBigInteger = BigInteger.TryParse(afterEncryption.Text, out bigInteger);
+                BigInt bigInteger;
+                bool maybeBigInteger = BigInt.TryParse(afterEncryption.Text, out bigInteger);
                 if (!maybeBigInteger)
                 {
                     MessageBox.Show("Ошибка расшифровки: Неверно задана строка для расшифровки.");
@@ -112,8 +110,8 @@ namespace CryptoForm
                 {
                     MessageBox.Show("Пустое поле");
                 }
-                BigInteger bigInteger;
-                bool maybeBigInteger = BigInteger.TryParse(afterEncryption.Text, out bigInteger);
+                BigInt bigInteger;
+                bool maybeBigInteger = BigInt.TryParse(afterEncryption.Text, out bigInteger);
                 if (!maybeBigInteger)
                 {
                     MessageBox.Show("Ошибка расшифровки: Неверно задана строка для расшифровки.");
