@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using Lib;
 
@@ -163,7 +164,8 @@ namespace Crypto
         /// <returns>Шифртекст в виде BigInt.</returns>
         public static BigInt Encrypt(string data, BigInt e, BigInt n)
         {
-            BigInt plaintext = new BigInt(data);
+            byte[] bytes = Encoding.UTF8.GetBytes(data);
+            BigInt plaintext = new BigInt(bytes);
             BigInt ciphertext = BigInt.ModPow(plaintext, e, n);
             return ciphertext;
         }
@@ -191,8 +193,8 @@ namespace Crypto
 
         public static BigInt n;
         public static BigInt publicKey;
-        public static int keySizeInBitsForPrivate = 256;
-        public static int keySizeInBitsForPublic = 16;
+        public static int keySizeInBitsForPrivate = 8;
+        public static int keySizeInBitsForPublic = 8;
 
         private static string alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"+
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
