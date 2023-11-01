@@ -29,193 +29,323 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.Encrypt = new System.Windows.Forms.Button();
-            this.Decrypt = new System.Windows.Forms.Button();
-            this.originalText = new System.Windows.Forms.RichTextBox();
-            this.afterEncryption = new System.Windows.Forms.RichTextBox();
-            this.afterDecryption = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.Key = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            Encrypt = new Button();
+            Decrypt = new Button();
+            originalText = new RichTextBox();
+            afterEncryption = new RichTextBox();
+            afterDecryption = new RichTextBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            Key = new TextBox();
+            label4 = new Label();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            afterDecryption2 = new RichTextBox();
+            afterEncryption2 = new RichTextBox();
+            originalText2 = new RichTextBox();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            SuspendLayout();
             // 
             // Encrypt
             // 
-            this.Encrypt.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Encrypt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Encrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Encrypt.ForeColor = System.Drawing.SystemColors.Control;
-            this.Encrypt.Location = new System.Drawing.Point(629, 109);
-            this.Encrypt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Encrypt.Name = "Encrypt";
-            this.Encrypt.Size = new System.Drawing.Size(211, 79);
-            this.Encrypt.TabIndex = 0;
-            this.Encrypt.Text = "Зашифровать";
-            this.Encrypt.UseVisualStyleBackColor = false;
-            this.Encrypt.Click += new System.EventHandler(this.Encrypt_Click_1);
+            Encrypt.BackColor = SystemColors.Highlight;
+            Encrypt.FlatStyle = FlatStyle.Popup;
+            Encrypt.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Encrypt.ForeColor = SystemColors.Control;
+            Encrypt.Location = new Point(528, 163);
+            Encrypt.Name = "Encrypt";
+            Encrypt.Size = new Size(185, 59);
+            Encrypt.TabIndex = 0;
+            Encrypt.Text = "Зашифровать";
+            Encrypt.UseVisualStyleBackColor = false;
+            Encrypt.Click += Encrypt_Click_1;
             // 
             // Decrypt
             // 
-            this.Decrypt.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Decrypt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Decrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Decrypt.ForeColor = System.Drawing.SystemColors.Control;
-            this.Decrypt.Location = new System.Drawing.Point(629, 315);
-            this.Decrypt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Decrypt.Name = "Decrypt";
-            this.Decrypt.Size = new System.Drawing.Size(211, 79);
-            this.Decrypt.TabIndex = 1;
-            this.Decrypt.Text = "Расшифровать";
-            this.Decrypt.UseVisualStyleBackColor = false;
-            this.Decrypt.Click += new System.EventHandler(this.Decrypt_Click_1);
+            Decrypt.BackColor = SystemColors.Highlight;
+            Decrypt.FlatStyle = FlatStyle.Popup;
+            Decrypt.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Decrypt.ForeColor = SystemColors.Control;
+            Decrypt.Location = new Point(528, 272);
+            Decrypt.Name = "Decrypt";
+            Decrypt.Size = new Size(185, 59);
+            Decrypt.TabIndex = 1;
+            Decrypt.Text = "Расшифровать";
+            Decrypt.UseVisualStyleBackColor = false;
+            Decrypt.Click += Decrypt_Click_1;
             // 
             // originalText
             // 
-            this.originalText.BackColor = System.Drawing.SystemColors.Menu;
-            this.originalText.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.originalText.Location = new System.Drawing.Point(67, 75);
-            this.originalText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.originalText.Name = "originalText";
-            this.originalText.Size = new System.Drawing.Size(443, 140);
-            this.originalText.TabIndex = 2;
-            this.originalText.Text = "";
+            originalText.BackColor = SystemColors.Menu;
+            originalText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            originalText.Location = new Point(28, 46);
+            originalText.Name = "originalText";
+            originalText.Size = new Size(388, 106);
+            originalText.TabIndex = 2;
+            originalText.Text = "";
             // 
             // afterEncryption
             // 
-            this.afterEncryption.BackColor = System.Drawing.SystemColors.Menu;
-            this.afterEncryption.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.afterEncryption.Location = new System.Drawing.Point(67, 285);
-            this.afterEncryption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.afterEncryption.Name = "afterEncryption";
-            this.afterEncryption.Size = new System.Drawing.Size(443, 140);
-            this.afterEncryption.TabIndex = 3;
-            this.afterEncryption.Text = "";
+            afterEncryption.BackColor = SystemColors.Menu;
+            afterEncryption.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            afterEncryption.Location = new Point(28, 204);
+            afterEncryption.Name = "afterEncryption";
+            afterEncryption.Size = new Size(388, 106);
+            afterEncryption.TabIndex = 3;
+            afterEncryption.Text = "";
             // 
             // afterDecryption
             // 
-            this.afterDecryption.BackColor = System.Drawing.SystemColors.Menu;
-            this.afterDecryption.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.afterDecryption.Location = new System.Drawing.Point(67, 491);
-            this.afterDecryption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.afterDecryption.Name = "afterDecryption";
-            this.afterDecryption.Size = new System.Drawing.Size(443, 140);
-            this.afterDecryption.TabIndex = 4;
-            this.afterDecryption.Text = "";
+            afterDecryption.BackColor = SystemColors.Menu;
+            afterDecryption.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            afterDecryption.Location = new Point(28, 358);
+            afterDecryption.Name = "afterDecryption";
+            afterDecryption.Size = new Size(388, 106);
+            afterDecryption.TabIndex = 4;
+            afterDecryption.Text = "";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(67, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 32);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Изначальный текст";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(-4, -39);
+            label1.Name = "label1";
+            label1.Size = new Size(180, 25);
+            label1.TabIndex = 5;
+            label1.Text = "Изначальный текст";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(67, 248);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 32);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "После зашифровки";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(28, 176);
+            label2.Name = "label2";
+            label2.Size = new Size(180, 25);
+            label2.TabIndex = 6;
+            label2.Text = "После зашифровки";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(67, 448);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(242, 32);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "После расшифровки";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(28, 326);
+            label3.Name = "label3";
+            label3.Size = new Size(192, 25);
+            label3.TabIndex = 7;
+            label3.Text = "После расшифровки";
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Location = new System.Drawing.Point(854, 609);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 55);
-            this.button1.TabIndex = 8;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            button1.BackColor = SystemColors.Control;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Center;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlLight;
+            button1.Location = new Point(752, 457);
+            button1.Name = "button1";
+            button1.Size = new Size(41, 41);
+            button1.TabIndex = 8;
+            button1.TextImageRelation = TextImageRelation.ImageAboveText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(645, 448);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 80);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Шифр Цезаря";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.BackColor = SystemColors.MenuHighlight;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(464, 174);
+            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(248, 48);
+            button2.TabIndex = 9;
+            button2.Text = "Шифр Цезаря";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(645, 567);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(181, 84);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Расшифровка";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            button3.BackColor = SystemColors.MenuHighlight;
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.ControlLightLight;
+            button3.Location = new Point(464, 271);
+            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Name = "button3";
+            button3.Size = new Size(248, 51);
+            button3.TabIndex = 10;
+            button3.Text = "Расшифровка";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // Key
             // 
-            this.Key.Location = new System.Drawing.Point(531, 615);
-            this.Key.Name = "Key";
-            this.Key.Size = new System.Drawing.Size(91, 27);
-            this.Key.TabIndex = 11;
+            Key.Location = new Point(599, 402);
+            Key.Margin = new Padding(3, 2, 3, 2);
+            Key.Name = "Key";
+            Key.Size = new Size(80, 32);
+            Key.TabIndex = 11;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(531, 567);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 38);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Ключ";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 16.2F, FontStyle.Italic, GraphicsUnit.Point);
+            label4.Location = new Point(599, 366);
+            label4.Name = "label4";
+            label4.Size = new Size(67, 30);
+            label4.TabIndex = 12;
+            label4.Text = "Ключ";
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(2, 2);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(748, 506);
+            tabControl1.TabIndex = 13;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(Decrypt);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Controls.Add(Encrypt);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(afterDecryption);
+            tabPage1.Controls.Add(afterEncryption);
+            tabPage1.Controls.Add(originalText);
+            tabPage1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(740, 478);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "RSA";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(label6);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(label8);
+            tabPage2.Controls.Add(afterDecryption2);
+            tabPage2.Controls.Add(afterEncryption2);
+            tabPage2.Controls.Add(originalText2);
+            tabPage2.Controls.Add(button3);
+            tabPage2.Controls.Add(label4);
+            tabPage2.Controls.Add(Key);
+            tabPage2.Controls.Add(button2);
+            tabPage2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(740, 478);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Caesar";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(28, 18);
+            label5.Name = "label5";
+            label5.Size = new Size(150, 25);
+            label5.TabIndex = 9;
+            label5.Text = "До зашифровки";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(24, 16);
+            label6.Name = "label6";
+            label6.Size = new Size(150, 25);
+            label6.TabIndex = 18;
+            label6.Text = "До зашифровки";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(24, 324);
+            label7.Name = "label7";
+            label7.Size = new Size(192, 25);
+            label7.TabIndex = 17;
+            label7.Text = "После расшифровки";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(24, 174);
+            label8.Name = "label8";
+            label8.Size = new Size(180, 25);
+            label8.TabIndex = 16;
+            label8.Text = "После зашифровки";
+            // 
+            // afterDecryption2
+            // 
+            afterDecryption2.BackColor = SystemColors.Menu;
+            afterDecryption2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            afterDecryption2.Location = new Point(24, 356);
+            afterDecryption2.Name = "afterDecryption2";
+            afterDecryption2.Size = new Size(388, 106);
+            afterDecryption2.TabIndex = 15;
+            afterDecryption2.Text = "";
+            // 
+            // afterEncryption2
+            // 
+            afterEncryption2.BackColor = SystemColors.Menu;
+            afterEncryption2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            afterEncryption2.Location = new Point(24, 202);
+            afterEncryption2.Name = "afterEncryption2";
+            afterEncryption2.Size = new Size(388, 106);
+            afterEncryption2.TabIndex = 14;
+            afterEncryption2.Text = "";
+            // 
+            // originalText2
+            // 
+            originalText2.BackColor = SystemColors.Menu;
+            originalText2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            originalText2.Location = new Point(24, 44);
+            originalText2.Name = "originalText2";
+            originalText2.Size = new Size(388, 106);
+            originalText2.TabIndex = 13;
+            originalText2.Text = "";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 680);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.Key);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.afterDecryption);
-            this.Controls.Add(this.afterEncryption);
-            this.Controls.Add(this.originalText);
-            this.Controls.Add(this.Decrypt);
-            this.Controls.Add(this.Encrypt);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Form1";
-            this.Text = "Проект - Криптография";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 510);
+            Controls.Add(tabControl1);
+            Controls.Add(button1);
+            Name = "Form1";
+            Text = "Проект - Криптография";
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -233,5 +363,15 @@
         private Button button3;
         private TextBox Key;
         private Label label4;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private RichTextBox afterDecryption2;
+        private RichTextBox afterEncryption2;
+        private RichTextBox originalText2;
     }
 }

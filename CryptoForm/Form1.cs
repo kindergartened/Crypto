@@ -48,13 +48,14 @@ namespace CryptoForm
                     MessageBox.Show("Ошибка расшифровки: Неверно задана строка для расшифровки.");
                 }
                 afterDecryption.Text = Decrypt(bigInteger);
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Непредвиденная ошибка");
             }
-            
+
         }
-        
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (Key.Text == "")
@@ -73,7 +74,7 @@ namespace CryptoForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (Key.Text=="")
+            if (Key.Text == "")
             {
                 MessageBox.Show("Пустой ключ");
                 return;
@@ -129,6 +130,9 @@ namespace CryptoForm
             afterDecryption.Text = "";
             afterEncryption.Text = "";
             originalText.Text = "";
+            afterDecryption2.Text = "";
+            afterEncryption2.Text = "";
+            originalText2.Text = "";
         }
     }
 }
