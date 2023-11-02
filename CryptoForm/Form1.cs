@@ -66,12 +66,12 @@ namespace CryptoForm
                 return;
             }
             int key = Convert.ToInt32(Key.Text);
-            if (originalText.Text == "")
+            if (originalText2.Text == "")
             {
                 MessageBox.Show("Пустое поле");
                 return;
             }
-            afterEncryption.Text = Caesar(originalText.Text, key);
+            afterEncryption2.Text = Caesar(originalText2.Text, key);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -82,12 +82,12 @@ namespace CryptoForm
                 return;
             }
             int key = Convert.ToInt32(Key.Text);
-            if (afterEncryption.Text == "")
+            if (afterEncryption2.Text == "")
             {
                 MessageBox.Show("Пустое поле");
                 return;
             }
-            afterDecryption.Text = Caesar(afterEncryption.Text, -key);
+            afterDecryption2.Text = Caesar(afterEncryption2.Text, -key);
         }
 
         private void Encrypt_Click_1(object sender, EventArgs e)
